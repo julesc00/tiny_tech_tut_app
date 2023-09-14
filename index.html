@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To the Power of Math!</title>
+    <!-- Styling for the UI client -->
+    <style>
+        h1 {
+            color: #FFFFFF;
+            font-family: system-ui;
+            margin-left: 20px;
+        }
+        body {
+            background-color: #222629;
+        }
+        label {
+            color: #86c232;
+            font-family: system-ui;
+            font-size: 20px;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #86c232;
+            border-color: #86c232;
+            color: #FFFFFF;
+            font-family: system-ui;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 30px;
+            margin-top: 20px;
+            width: 140px;
+        }
+        input {
+            color: #222629;
+            font-family: system-ui;
+            font-size: 20px;
+            margin-left: 10px;
+            margin-top: 20px;
+            width: 100px;
+        }
+    </style>
+
+    <script>
+        // callAPI function that takes `base`and èxponent`numbers as parameters
+        const callAPI = (base, exponent) => {
+            // Instantiate a headers object
+            const myHeaders = new Headers()
+            myHeaders.append("Content-type", "application/json")
+            const raw = JSON.stringify({
+                "base": base,
+                "exponent": exponent
+            })
+
+            // Create a JSON object with parameters for API calland store in a variable
+            const requestOptions = {
+                method: "POST",
+                headers: myHeaders,
+                body: raw,
+                redirect: "follow"
+            }
+
+            // Make API call with parameters and use promises to get response
+            fetch("Add API Gateway endpoint here", requestOptions)
+                .then(response => response.text())
+                .then(result => alert(JSON.parse(result).body))
+                .catch(err => console.log("error", err))
+        }
+    </script>
+</head>
+<body>
+    <h1>To The Power of Math!</h1>
+
+    <form action="">
+        <label for="base">Base Number:</label>
+        <input type="text" name="base" id="base">
+        <label for="exponent">... to the power of:</label>
+        <input type="text" name="exponent" id="exponent">
+        <!-- Set button onClick to call function defined passing input values as parameters -->
+        <button
+            type="button"
+            onclick="callAPI(document.getElementById('base').value, document.getElementById('exponent').value)"
+        >
+            Calculate
+        </button>
+    </form>
+</body>
+</html>
