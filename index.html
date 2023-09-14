@@ -61,7 +61,7 @@
             }
 
             // Make API call with parameters and use promises to get response
-            fetch("Add API Gateway endpoint here", requestOptions)
+            fetch("https://0jp1ikcpr1.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
                 .then(response => response.text())
                 .then(result => alert(JSON.parse(result).body))
                 .catch(err => console.log("error", err))
